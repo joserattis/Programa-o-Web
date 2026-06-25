@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de Estados do Brasil</h1>
+    <ul id = "list"></ul>
+
+    <script>
+        fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById("list");
+                data.forEach(estado => {
+                    const li = document.createElement("li");
+                    li.textContent = estado.nome;
+                    list.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>
