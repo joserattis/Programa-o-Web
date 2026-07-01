@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de JavaScript - Parte 2</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h2 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-bottom: 10px;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Exercícios de Lógica</h2>
+        <p>Clique nos botões abaixo para executar cada script.</p>
+
+        <button onclick="exeMaioridade()">1. Verificação de Maioridade</button>
+        <button onclick="exeAprovacao()">2. Aprovação de Aluno (Simples)</button>
+        <button onclick="exeComparacao()">3. Comparação de Valores (A e B)</button>
+        <button onclick="exeParOuImpar()">4. Número Par ou Ímpar</button>
+        <button onclick="exeClassificacaoNota()">5. Classificação Detalhada de Notas</button>
+        <button onclick="exePositivoNegativo()">6. Positivo, Negativo ou Zero</button>
+        <button onclick="exeCalculoIMC()">7. Classificação de IMC</button>
+        <button onclick="exeEquacaoSegundoGrau()">8. Calculadora de Equação do 2º Grau</button>
+    </div>
+
+    <script>
+        // Exercício 1
+        function exeMaioridade() {
+            let idade = prompt("Digite sua idade:");
+            idade = Number(idade);
+            if (idade >= 18) {
+                alert("Você é maior de idade!");
+            }
+        }
+
+        // Exercício 2
+        function exeAprovacao() {
+            let nota = Number(prompt("Digite a nota:"));
+            if (nota >= 60) {
+                alert("Aprovado");
+            } else {
+                alert("Reprovado");
+            }
+        }
+
+        // Exercício 3
+        function exeComparacao() {
+            let A = Number(prompt("Digite o valor de A:"));
+            let B = Number(prompt("Digite o valor de B:"));
+            if (A > B) {
+                alert("A maior que B");
+            } else {
+                alert("A menor ou igual a B");
+            }
+        }
+
+        // Exercício 4
+        function exeParOuImpar() {
+            let numero = Number(prompt("Digite um número:"));
+            if (numero % 2 === 0) {
+                alert("O número é par");
+            } else {
+                alert("O número é ímpar");
+            }
+        }
+
+        // Exercício 5
+        function exeClassificacaoNota() {
+            let nota = Number(prompt("Digite a nota:"));
+            if (nota >= 90) {
+                alert("Nota excelente!");
+            } else if (nota >= 80) {
+                alert("Nota ótima!");
+            } else if (nota >= 70) {
+                alert("Nota boa!");
+            } else if (nota >= 60) {
+                alert("Nota regular!");
+            } else {
+                alert("Nota insuficiente");
+            }
+        }
+
+        // Exercício 6
+        function exePositivoNegativo() {
+            let x = Number(prompt("Digite um número:"));
+            if (x === 0) {
+                alert("X é igual a zero");
+            } else {
+                if (x > 0) {
+                    alert("X é positivo");
+                } else {
+                    alert("X é negativo");
+                }
+            }
+        }
+
+        // Exercício 7
+        function exeCalculoIMC() {
+            let peso = Number(prompt("Digite seu peso em kg:"));
+            let altura = Number(prompt("Digite sua altura em metros (ex: 1.75):"));
+            let imc = peso / (altura ** 2);
+
+            if (imc < 18.5) {
+                alert("Abaixo do peso");
+            } else if (imc < 25) {
+                alert("Peso normal");
+            } else if (imc < 30) {
+                alert("Sobrepeso");
+            } else {
+                alert("Obeso");
+            }
+        }
+
+        // Exercício 8
+        function exeEquacaoSegundoGrau() {
+            let a = Number(prompt("Digite o coeficiente a:"));
+            let b = Number(prompt("Digite o coeficiente b:"));
+            let c = Number(prompt("Digite o coeficiente c:"));
+
+            if (a === 0) {
+                alert("Não é uma equação do segundo grau.");
+            } else {
+                let delta = b ** 2 - 4 * a * c;
+                
+                if (delta > 0) {
+                    let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                    let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                    alert("Duas raízes reais: x'=" + x1.toFixed(2) + ", x''=" + x2.toFixed(2));
+                } else if (delta === 0) {
+                    let x = -b / (2 * a);
+                    alert("Única raiz real: x=" + x.toFixed(2));
+                } else {
+                    alert("Não há raízes reais.");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

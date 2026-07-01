@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de JavaScript - Repetição</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h2 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-bottom: 10px;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Exercícios de Repetição</h2>
+        <p>Aperte <strong>F12</strong> para abrir o Console antes de rodar os testes.</p>
+
+        <!-- Exercícios básicos de While/For[cite: 7] -->
+        <button onclick="exe1a10()">1. Mostrar de 1 a 10 no Console</button>
+        <button onclick="exe10a1()">2. Mostrar de 10 a 1 no Console</button>
+        
+        <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
+        
+        <!-- Exercícios finais do slide 68[cite: 7] -->
+        <button onclick="exePares()">3. Pares de 1 a 100 (Console)</button>
+        <button onclick="exeEntreNumeros()">4. Números entre dois valores (Console)</button>
+        <button onclick="exeSoma50a100()">5. Soma de 50 a 100 (Alerta)</button>
+    </div>
+
+    <script>
+        // Exercício: Mostre os números de 1 a 10 no console[cite: 7].
+        function exe1a10() {
+            console.log("--- Números de 1 a 10 ---");
+            for (let i = 1; i <= 10; i++) {
+                console.log(i);
+            }
+            alert("Números impressos! Verifique o console do navegador.");
+        }
+
+        // Exercício: Mostre os números de 10 a 1 no console[cite: 7].
+        function exe10a1() {
+            console.log("--- Números de 10 a 1 ---");
+            for (let i = 10; i >= 1; i--) {
+                console.log(i);
+            }
+            alert("Números impressos em ordem decrescente! Verifique o console.");
+        }
+
+        // Exercício: Mostre no console todos os números pares de 1 a 100[cite: 7].
+        function exePares() {
+            console.log("--- Pares de 1 a 100 ---");
+            // Avançando de 2 em 2 para otimizar o laço
+            for (let i = 2; i <= 100; i += 2) {
+                console.log(i);
+            }
+            alert("Números pares impressos! Verifique o console.");
+        }
+
+        // Exercício: Leia dois números e mostre todos os números entre eles (independente da ordem)[cite: 7].
+        function exeEntreNumeros() {
+            let num1 = Number(prompt("Digite o primeiro número (Ex: -1):"));
+            let num2 = Number(prompt("Digite o segundo número (Ex: 2):"));
+
+            // Precisamos descobrir qual é o menor e qual é o maior para criar a repetição correta
+            let menor = Math.min(num1, num2);
+            let maior = Math.max(num1, num2);
+
+            console.log(`--- Números entre ${num1} e ${num2} ---`);
+            for (let i = menor; i <= maior; i++) {
+                console.log(i);
+            }
+            alert(`Intervalo de ${menor} a ${maior} impresso no console!`);
+        }
+
+        // Exercício: Mostre em um alerta o resultado da soma de todos os números de 50 até 100[cite: 7].
+        function exeSoma50a100() {
+            let soma = 0;
+            
+            // O laço acumula os valores na variável 'soma'
+            for (let i = 50; i <= 100; i++) {
+                soma += i;
+            }
+            
+            // Exibe o resultado final diretamente no alert, conforme solicitado[cite: 7].
+            alert("A soma de todos os números de 50 a 100 é: " + soma);
+        }
+    </script>
+</body>
+</html>

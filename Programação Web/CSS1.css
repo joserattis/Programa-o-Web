@@ -1,0 +1,138 @@
+/* ==========================================================================
+   1. Variáveis Globais (Root)
+   Facilita a manutenção. Se precisar mudar a cor principal do projeto, 
+   basta alterar aqui e aplicará em todo o código em cascata.
+========================================================================== */
+:root {
+    --cor-primaria: #0056b3;     /* Azul corporativo/tecnológico */
+    --cor-secundaria: #ffc107;   /* Amarelo para destaque */
+    --cor-fundo: #f4f7f6;        /* Cinza bem claro para o fundo da página */
+    --cor-texto: #333333;
+    --cor-borda: #cccccc;
+}
+
+/* ==========================================================================
+   2. Reset Básico e Herança
+   Remove as margens padrão do navegador e define uma fonte global.
+========================================================================== */
+* {
+    box-sizing: border-box; /* Garante que padding e border não aumentem a largura do elemento */
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center; /* Centraliza o formulário na tela */
+}
+
+/* ==========================================================================
+   3. Estilização Principal do Formulário
+========================================================================== */
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade */
+    width: 100%;
+    max-width: 600px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--cor-primaria);
+}
+
+/* ==========================================================================
+   4. Estruturação dos Grupos (Fieldsets e Legends)
+========================================================================== */
+fieldset {
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background-color: #fafafa;
+}
+
+legend {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: inline-block;
+    font-size: 0.95em;
+}
+
+/* ==========================================================================
+   5. Seletores de Atributos
+   Estiliza apenas os inputs de digitação, seleção e área de texto.
+========================================================================== */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    background-color: #fff;
+    transition: all 0.3s ease; /* Transição suave para o efeito de Focus */
+}
+
+/* Pseudo-classe :focus - Destaca o campo que o usuário está clicando/digitando */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+}
+
+/* Ajustes específicos para Radio e Checkbox para não ocuparem 100% da tela */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 8px;
+    margin-bottom: 10px;
+    transform: scale(1.2); /* Aumenta levemente a caixinha para melhor clique */
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   6. Botão de Envio (Submit)[cite: 2]
+========================================================================== */
+input[type="submit"] {
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+/* Pseudo-classe :hover - Efeito quando o mouse passa por cima do botão */
+input[type="submit"]:hover {
+    background-color: #004494; /* Tom de azul um pouco mais escuro */
+}

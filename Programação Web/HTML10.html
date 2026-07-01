@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercícios React em um Arquivo</title>
+    <!-- Carregando React, ReactDOM e Babel (o tradutor de JSX) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f9; }
+        .box { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        button { margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // --- Exercício 1: Componentes e Props ---
+        function Filho(props) {
+            return <h3>Meu nome é {props.name}!</h3>;
+        }
+
+        function Exercicio1() {
+            return (
+                <div className="box">
+                    <h2>Exercício 1: Props</h2>
+                    <Filho name="Ana" />
+                    <Filho name="Bia" />
+                    <Filho name="Carlos" />
+                </div>
+            );
+        }
+
+        // --- Exercício 2: Tabuada ---
+        function Exercicio2() {
+            const [numero, setNumero] = React.useState(1);
+            const linhas = [];
+            for(let i=1; i<=10; i++) {
+                linhas.push(<li key={i}>{numero} x {i} = {numero * i}</li>);
+            }
+
+            return (
+                <div className="box">
+                    <h2>Exercício 2: Tabuada</h2>
+                    <select onChange={(e) => setNumero(Number(e.target.value))}>
+                        {[...Array(10)].map((_, i) => <option key={i+1} value={i+1}>{i+1}</option>)}
+                    </select>
+                    <ul>{linhas}</ul>
+                </div>
+            );
+        }
+
+        // --- Exercício 3: CRUD ---
+        function Exercicio3() {
+            const [itens, setItens] = React.useState([]);
+            const [texto, setTexto] = React.useState("");
+
+            function adicionar() {
+                if(texto) setItens([...itens, texto]);
+                setTexto("");
+            }
+
+            function remover(index) {
+                setItens(itens.filter((_, i) => i !== index));
+            }
+
+            return (
+                <div className="box">
+                    <h2>Exercício 3: CRUD</h2>
+                    <input value={texto} onChange={(e) => setTexto(e.target.value)} />
+                    <button onClick={adicionar}>Adicionar</button>
+                    <ul>
+                        {itens.map((item, index) => (
+                            <li key={index}>
+                                {item} <button onClick={() => remover(index)}>Remover</button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        // Componente Principal
+        function App() {
+            return (
+                <div>
+                    <h1>Lista de Exercícios React</h1>
+                    <Exercicio1 />
+                    <Exercicio2 />
+                    <Exercicio3 />
+                </div>
+            );
+        }
+
+        // Renderização
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

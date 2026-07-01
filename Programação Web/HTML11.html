@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD e API IBGE</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f9; }
+        .box { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        ul { list-style: none; padding: 0; }
+        li { background: #eee; margin: 5px 0; padding: 10px; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2>1. Dados do IBGE (Fetch API)</h2>
+        <select id="selectEstados">
+            <option>Carregando estados...</option>
+        </select>
+        <button onclick="adicionarEstado()">Adicionar aos Favoritos</button>
+    </div>
+
+    <div class="box">
+        <h2>2. CRUD Local (Favoritos)</h2>
+        <ul id="listaFavoritos"></ul>
+    </div>
+
+    <script>
+        // --- READ: Consumo da API IBGE usando Fetch ---
+        async function carregarEstados() {
+            try {
+                // Utilizando Fetch para realizar requisição HTTP
+                const response = await fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome");
+                const estados = await response.json(); // Convertendo resposta para JSON
+                
+                const select = document.getElementById("selectEstados");
+                select.innerHTML = "";
+                
+                estados.forEach(estado => {
+                    const option = document.createElement("option");
+                    option.value = estado.nome;
+                    option.textContent = `${estado.nome} (${estado.sigla})`;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error("Erro ao buscar estados:", error); // Tratamento de erro
+            }
+        }
+
+        // --- CRUD LOCAL (Array gerenciado na memória) ---
+        let favoritos = [];
+
+        function renderizar() {
+            const lista = document.getElementById("listaFavoritos");
+            lista.innerHTML = "";
+            favoritos.forEach((item, index) => {
+                lista.innerHTML += `<li>${item} 
+                    <div>
+                        <button onclick="atualizar(${index})">Atualizar</button>
+                        <button onclick="remover(${index})">Remover</button>
+                    </div>
+                </li>`;
+            });
+        }
+
+        function adicionarEstado() {
+            const estado = document.getElementById("selectEstados").value;
+            favoritos.push(estado);
+            renderizar();
+        }
+
+        function remover(index) {
+            favoritos.splice(index, 1);
+            renderizar();
+        }
+
+        function atualizar(index) {
+            const novoNome = prompt("Novo nome para o favorito:", favoritos[index]);
+            if (novoNome) {
+                favoritos[index] = novoNome;
+                renderizar();
+            }
+        }
+
+        // Iniciar carregamento dos dados da API ao abrir a página
+        carregarEstados();
+    </script>
+</body>
+</html>

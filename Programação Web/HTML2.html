@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Cadastro</title>
+</head>
+<body>
+
+    <h2>Tarefa: Formulário de Cadastro</h2>
+
+    <!-- Utilizando o método POST para envio de dados, conforme recomendado na aula para maior segurança -->
+    <form action="/cadastrar" method="post">
+
+        <!-- Seção: Dados Pessoais -->
+        <fieldset>
+            <legend>Dados Pessoais</legend>
+
+            <label for="nome">Nome:</label><br>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome"><br><br>
+
+            <label for="email">E-mail:</label><br>
+            <input type="email" id="email" name="email" placeholder="email@exemplo.com"><br><br>
+
+            <label for="nascimento">Data de Nascimento:</label><br>
+            <input type="date" id="nascimento" name="nascimento"><br><br>
+
+            <label>Gênero:</label><br>
+            <input type="radio" id="masculino" name="genero" value="masculino">
+            <label for="masculino">Masculino</label><br>
+            <input type="radio" id="feminino" name="genero" value="feminino">
+            <label for="feminino">Feminino</label><br>
+            <input type="radio" id="outro" name="genero" value="outro">
+            <label for="outro">Outro</label><br><br>
+
+            <label for="foto">Foto de Perfil:</label><br>
+            <input type="file" id="foto" name="foto"><br><br>
+        </fieldset>
+
+        <!-- Seção: Preferências e Hobbies -->
+        <fieldset>
+            <legend>Preferências e Hobbies</legend>
+
+            <label>Escolha seus hobbies:</label><br>
+            <input type="checkbox" id="esportes" name="hobbies" value="esportes">
+            <label for="esportes">Esportes</label><br>
+            
+            <input type="checkbox" id="jogos" name="hobbies" value="jogos">
+            <label for="jogos">Jogos</label><br>
+            
+            <input type="checkbox" id="leitura" name="hobbies" value="leitura">
+            <label for="leitura">Leitura</label><br>
+            
+            <input type="checkbox" id="musica" name="hobbies" value="musica">
+            <label for="musica">Música</label><br><br>
+
+            <label for="cor">Cor favorita:</label><br>
+            <input type="color" id="cor" name="cor"><br><br>
+
+            <label for="idioma">Idioma que mais usa:</label><br>
+            <select id="idioma" name="idioma">
+                <option value="pt">Português</option>
+                <option value="en">Inglês</option>
+                <option value="es">Espanhol</option>
+            </select><br><br>
+        </fieldset>
+
+        <!-- Seção: Mensagem -->
+        <fieldset>
+            <legend>Mensagem</legend>
+
+            <label for="mensagem">Fale um pouco sobre você:</label><br>
+            <textarea id="mensagem" name="mensagem" rows="5" cols="40" placeholder="Digite aqui..."></textarea><br><br>
+        </fieldset>
+
+        <!-- Botão de Envio -->
+        <input type="submit" value="Enviar">
+
+    </form>
+
+</body>
+</html>

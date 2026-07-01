@@ -1,0 +1,6 @@
+.container {
+    display: flex; /* Flexbox */
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}

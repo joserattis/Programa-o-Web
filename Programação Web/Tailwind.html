@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white p-6 rounded shadow">
+        <h1 class="text-2xl font-bold mb-4">CRUD Tailwind</h1>
+        <div class="flex gap-2">
+            <input id="input" class="border p-2 flex-grow rounded" placeholder="Novo item">
+            <button onclick="add()" class="bg-blue-500 text-white px-4 py-2 rounded">Add</button>
+        </div>
+        <ul id="lista" class="mt-4 space-y-2"></ul>
+    </div>
+
+    <script>
+        const itens = [];
+        function add() {
+            const val = document.getElementById('input').value;
+            itens.push(val);
+            render();
+        }
+        function render() {
+            const lista = document.getElementById('lista');
+            lista.innerHTML = itens.map(item => `<li class="bg-gray-200 p-2 rounded">${item}</li>`).join('');
+        }
+    </script>
+</body>
+</html>
